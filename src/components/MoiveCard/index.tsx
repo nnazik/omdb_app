@@ -69,8 +69,8 @@ export const MovieCardComponent = (props: MovieCardComponentProps) => {
                 <div>
                   {detailsResults.Ratings.length > 0 &&
                     detailsResults.Ratings.map((item) => (
-                      <li>
-                        {item.Source}:{item.Value}
+                      <li key={item.Source}>
+                        {item.Source} :{item.Value}
                       </li>
                     ))}
                 </div>

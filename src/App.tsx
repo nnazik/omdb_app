@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { MovieCardComponent } from './components/MoiveCard'
 import { NavigationBar } from './components/NavigationBar'
+import Pagination from './components/Pagination'
 import './App.css'
 
 interface MovieResponse {
@@ -18,6 +19,8 @@ const movieResponseInitial: MovieResponse = {
 function App() {
   const [searchParam, setSearchParam] = useState('')
   const [searchResult, setSearchResult] = useState(movieResponseInitial)
+  const [currentPage, setCurrentPage] = useState(1)
+  const moviePerPage = 10
 
   const getMovies = async () => {
     await fetch(`http://www.omdbapi.com/?s=${searchParam}&apikey=de8df502`)
@@ -44,6 +47,17 @@ function App() {
       )
   }
 
+  const indexOfLastMovie = currentPage * moviePerPage
+  const indexOfFirstMovie = indexOfLastMovie - moviePerPage
+  const currentMovies = searchResult.Search.slice(
+    indexOfFirstMovie,
+    indexOfLastMovie,
+  )
+
+  const paginate = (pageNumber: React.SetStateAction<number>) => {
+    setCurrentPage(pageNumber)
+  }
+
   return (
     <>
       <NavigationBar
@@ -63,16 +77,24 @@ function App() {
         )}
 
         {searchResult.Response === 'True' && (
-          <div className="grid-container">
-            {searchResult.Search.map((movie: any) => (
-              <MovieCardComponent
-                imdbID={movie.imdbID}
-                Year={movie.Year}
-                Title={movie.Title}
-                Poster={movie.Poster}
-              />
-            ))}
-          </div>
+          <>
+            <div className="grid-container">
+              {currentMovies.map((movie: any) => (
+                <MovieCardComponent
+                  key={movie.imdbID}
+                  imdbID={movie.imdbID}
+                  Year={movie.Year}
+                  Title={movie.Title}
+                  Poster={movie.Poster}
+                />
+              ))}
+            </div>
+            <Pagination
+              paginate={paginate}
+              moviePerPage={moviePerPage}
+              totalMovies={searchResult.Search.length}
+            />
+          </>
         )}
       </div>
     </>
