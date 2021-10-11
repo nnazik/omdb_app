@@ -44,7 +44,7 @@ export const MovieCardComponent = (props: MovieCardComponentProps) => {
   }
 
   return (
-    <div className="card">
+    <div className={detailsResults.imdbID ? 'card grid-full' : 'card'}>
       <img
         width="200"
         height="300"
