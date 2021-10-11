@@ -1,0 +1,47 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 999;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: black;
+}
+
+.search-title {
+    color: black;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.search-input {
+    border: none;
+    border-bottom: 2px solid lightgrey;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search-btn:hover {
+    cursor: pointer;
+}
