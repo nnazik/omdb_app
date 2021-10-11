@@ -19,7 +19,13 @@ export const NavigationBar = (props: NavigationBarProps) => {
               value={props.searchParam}
               onChange={(e) => props.onChangeSearch(e.target.value)}
             />
-            <button className="btn" onClick={() => props.onSearchParam()}>
+            <button
+              className="btn"
+              disabled={props.searchParam === ''}
+              onClick={() => {
+                props.searchParam && props.onSearchParam()
+              }}
+            >
               SEARCH
             </button>
           </div>

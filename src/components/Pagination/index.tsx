@@ -3,6 +3,7 @@ import React from 'react'
 interface PaginationProps {
   moviePerPage: number
   totalMovies: number
+  currentPage: number
   paginate: (pageNumber: number) => void
 }
 
@@ -18,11 +19,22 @@ const Pagination = (props: PaginationProps) => {
       <nav>
         <ul className="pagination">
           {pageNumbers.map((number) => (
-            <li className="page-item" key={number}>
+            <li
+              className={
+                props.currentPage === number ? 'page-item-current' : 'page-item'
+              }
+              key={number}
+            >
               <a
-                onClick={() => props.paginate(number)}
+                onClick={() => {
+                  props.currentPage !== number && props.paginate(number)
+                }}
                 href="!#"
-                className="page-link"
+                className={
+                  props.currentPage === number
+                    ? 'page-link-current'
+                    : 'page-link'
+                }
               >
                 {number}
               </a>

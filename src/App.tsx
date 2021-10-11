@@ -20,7 +20,7 @@ function App() {
   const [searchParam, setSearchParam] = useState('')
   const [searchResult, setSearchResult] = useState(movieResponseInitial)
   const [currentPage, setCurrentPage] = useState(1)
-  const moviePerPage = 10
+  const moviePerPage = 8
 
   const getMovies = async () => {
     await fetch(`http://www.omdbapi.com/?s=${searchParam}&apikey=de8df502`)
@@ -93,6 +93,7 @@ function App() {
               paginate={paginate}
               moviePerPage={moviePerPage}
               totalMovies={searchResult.Search.length}
+              currentPage={currentPage}
             />
           </>
         )}
