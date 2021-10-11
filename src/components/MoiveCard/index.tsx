@@ -30,7 +30,7 @@ const intialState: IntialStateInterace = {
 export const MovieCardComponent = (props: MovieCardComponentProps) => {
   const [detailsResults, setDetailsResult] = React.useState(intialState)
 
-  const getProducts = async () => {
+  const getMovieDetails = async () => {
     await fetch(`http://www.omdbapi.com/?i=${props.imdbID}&apikey=de8df502`)
       .then((res) => res.json())
       .then(
@@ -81,7 +81,7 @@ export const MovieCardComponent = (props: MovieCardComponentProps) => {
         <div className="card-details-bottom">
           <div>{props.Year}</div>
           {!detailsResults.imdbID && (
-            <button className="btn" onClick={() => getProducts()}>
+            <button className="btn" onClick={() => getMovieDetails()}>
               DETAILS
             </button>
           )}
