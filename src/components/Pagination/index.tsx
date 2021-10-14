@@ -29,7 +29,7 @@ const Pagination = (props: PaginationProps) => {
                 onClick={() => {
                   props.currentPage !== number && props.paginate(number)
                 }}
-                href="!#"
+                href="#"
                 className={
                   props.currentPage === number
                     ? 'page-link-current'

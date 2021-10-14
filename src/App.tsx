@@ -27,6 +27,11 @@ function App() {
       .then((res) => res.json())
       .then(
         (result) => {
+            setSearchResult({
+                Response: '',
+                Error: '',
+                Search: [],
+            })
           if (result.Response === 'True') {
             setSearchResult({
               Response: result.Response,

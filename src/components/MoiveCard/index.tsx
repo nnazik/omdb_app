@@ -45,12 +45,14 @@ export const MovieCardComponent = (props: MovieCardComponentProps) => {
 
   return (
     <div className={detailsResults.imdbID ? 'card grid-full' : 'card'}>
-      <img
-        width="200"
-        height="300"
-        src={props.Poster === 'N/A' ? defaultImage : props.Poster}
-        alt="poster"
-      />
+      <div className="card-image">
+        <img
+            width="150"
+            height="200"
+            src={props.Poster === 'N/A' ? defaultImage : props.Poster}
+            alt="poster"
+        />
+      </div>
       <div className="card-details">
         <div className="card-details-container">
           <div>{props.Title}</div>
