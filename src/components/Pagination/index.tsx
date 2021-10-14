@@ -16,6 +16,7 @@ const Pagination = (props: PaginationProps) => {
 
   return (
     <div>
+      <div className="pagination">{`Total Results : ${props.totalMovies}`}</div>
       <nav>
         <ul className="pagination">
           {pageNumbers.map((number) => (
@@ -25,11 +26,10 @@ const Pagination = (props: PaginationProps) => {
               }
               key={number}
             >
-              <a
+              <span
                 onClick={() => {
                   props.currentPage !== number && props.paginate(number)
                 }}
-                href="#"
                 className={
                   props.currentPage === number
                     ? 'page-link-current'
@@ -37,7 +37,7 @@ const Pagination = (props: PaginationProps) => {
                 }
               >
                 {number}
-              </a>
+              </span>
             </li>
           ))}
         </ul>
